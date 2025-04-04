@@ -1,0 +1,61 @@
+{% extends 'storeApp/layout.html' %}
+{% load static %}
+
+
+
+{% block content %}
+<header class="store">
+  <div class="container">
+    <div class="header__store-inner">
+      <div class="header__image">
+        <a class="header__image-link" href="#">
+          <img src="{% static 'deps/images/header-image.png' %}" alt="Robinzon" width="80px" loading="lazy">
+        </a>
+      </div>
+      <h1 class="header__store-title"><span>Only yours </span> Robinzon </h1>
+    </div>
+  </div>
+</header>
+<main>
+  <div class="container">
+    <div class="main__store-inner">
+      <p class="main__text">
+        Магазин туристического снаряжения от Robinzon.
+        Лучшее качество <span>только у нас</span>
+      </p>
+      <div class="main__phone">
+        <h2 class="main__phone-title">
+          Всегда рады помочь!
+        </h2>
+        <ul class="main__number-list">
+          <li class="main__phone-mtc">
+            <img src="{% static 'deps/images/mtc.png' %}" alt="MTC logo" width="10px" loading="lazy">
+            <p class="main__phone-text">
+              +375 (29) 545-60-70
+            </p>
+          </li>
+          <li class="main__phone-a1">
+            <img src="{% static 'deps/images/A1.jpg' %}" alt="A1 logo" width="15px" loading="lazy">
+            <p class="main__phone-text">
+              +375 (29) 602-60-70
+            </p>
+          </li>
+          <li class="main__phone-mtc --special">
+            <img src="{% static 'deps/images/A1.jpg' %}" alt="A1 logo" width="15px" loading="lazy">
+            <p class="main__phone-text">
+              +375 (29) 602-55-70
+              <span>юр. лицо</span>
+            </p>
+          </li>
+        </ul>
+      </div>
+      <p class="main__address">
+        ТЦ Немига, <span>этаж 0, место 28</span>
+      </p>
+
+      <a class="tohome-link" href="{% url 'storeApp:index' %}">← Главная</a>
+    </div>
+  </div>
+</main>
+
+{% endblock content%}

@@ -1,0 +1,432 @@
+@charset "UTF-8";
+/**
+  Нормализация блочной модели
+ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+/**
+  Убираем внутренние отступы слева тегам списков,
+  у которых есть атрибут class
+ */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+  Убираем внешние отступы body и двум другим тегам,
+  у которых есть атрибут class
+ */
+body,
+:where(blockquote, figure):where([class]) {
+  margin: 0;
+}
+
+/**
+  Убираем внешние отступы вертикали нужным тегам,
+  у которых есть атрибут class
+ */
+:where(h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  margin-left: 0;
+  padding: 0;
+  border: none;
+}
+
+/**
+  Убираем стандартный маркер маркированному списку,
+  у которого есть атрибут class
+ */
+:where(ul[class]) {
+  list-style: none;
+}
+
+:where(address[class]) {
+  font-style: normal;
+}
+
+/**
+  Обнуляем вертикальные внешние отступы параграфа,
+  объявляем локальную переменную для внешнего отступа вниз,
+  чтобы избежать взаимодействие с более сложным селектором
+ */
+p {
+  --paragraphMarginBottom: 24px;
+  margin-block: 0;
+}
+
+/**
+  Внешний отступ вниз для параграфа без атрибута class,
+  который расположен не последним среди своих соседних элементов
+ */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+/**
+  Упрощаем работу с изображениями и видео
+ */
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/**
+  Наследуем свойства шрифт для полей ввода
+ */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  height: 100%;
+  /**
+    Убираем скачок интерфейса по горизонтали
+    при появлении / исчезновении скроллбара
+   */
+  scrollbar-gutter: stable;
+}
+
+/**
+  Плавный скролл
+ */
+html,
+:has(:target) {
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  min-height: 100%;
+  /**
+    Унифицированный интерлиньяж
+   */
+  line-height: 1.5;
+}
+
+/**
+  Нормализация высоты элемента ссылки при его инспектировании в DevTools
+ */
+a:where([class]) {
+  display: inline-flex;
+}
+
+/**
+  Курсор-рука при наведении на элемент
+ */
+button,
+label {
+  cursor: pointer;
+}
+
+/**
+  Приводим к единому цвету svg-элементы
+  (за исключением тех, у которых уже указан
+  атрибут fill со значением 'none' или начинается с 'url')
+ */
+:where([fill]:not([fill=none],
+[fill^=url])) {
+  fill: currentColor;
+}
+
+/**
+  Приводим к единому цвету svg-элементы
+  (за исключением тех, у которых уже указан
+  атрибут stroke со значением 'none')
+ */
+:where([stroke]:not([stroke=none],
+[stroke^=url])) {
+  stroke: currentColor;
+}
+
+/**
+  Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+ */
+svg * {
+  transition-property: fill, stroke;
+}
+
+/**
+  Приведение рамок таблиц в классический 'collapse' вид
+ */
+:where(table) {
+  border-collapse: collapse;
+  border-color: currentColor;
+}
+
+/**
+  Удаляем все анимации и переходы для людей,
+  которые предпочитают их не использовать
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+@font-face {
+  font-family: "Inter-Regular";
+  font-display: swap;
+  src: local("Inter"), url("fonts/Inter-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Manrope-ExtraLight";
+  font-display: swap;
+  src: local("Manrope"), url("fonts/Manrope-ExtraLight.woff2") format("woff2");
+}
+@font-face {
+  font-family: "PlusJakartaSans-Regular";
+  font-display: swap;
+  src: local("Plus Jakarta Sans"), url("fonts/PlusJakartaSans-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Poppins-Regular";
+  font-display: swap;
+  src: local("Poppins"), url("fonts/Poppins-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "PublicSans-Thin";
+  font-display: swap;
+  src: local("Public Sans"), url("fonts/PublicSans-Thin.woff2") format("woff2");
+}
+:root {
+  --gray-granite-99: #636363;
+  --grey-crayola: #323142;
+  --blue-charcoal: #334155;
+  --white: #FFF;
+  --blue-violet-124: #7C6FCD;
+  --blue-catalina: #002073;
+  --green-sea: #309D5B;
+  --black-olive: #3E3E3E;
+  /* Font Family */
+  --font-family-base: "Inter", sans-serif;
+  --popins: "Poppins", sans-serif;
+  --plus-jakarta-sans: "Plus Jakarta Sans", sans-serif;
+  --manrope: "Manrope", sans-serif;
+  /* Shadows */
+  --box-shadow: 7px 82px 42px var(--grey-crayola);
+  /* Container */
+  --container-width: 1240px;
+  --container-padding-x: 15px;
+  /* Transition */
+  --transition-duration: 0.2s;
+}
+
+.container {
+  max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-x);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  -webkit-clip-path: inset(100%) !important;
+          clip-path: inset(100%) !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important;
+}
+
+body {
+  font-size: clamp(16px, 1.25vw, 18px);
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  line-height: 1.28;
+  color: var(--dark);
+  background-color: var(--white);
+}
+
+a,
+button,
+input,
+textarea,
+svg * {
+  --transition-duration: 0.2s;
+  transition-duration: var(--transition-duration);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 500;
+}
+
+h1 .h1 {
+  font-size: clamp(43px, 4.1666666667vw, 60px);
+}
+
+h2 .h2 {
+  font-size: clamp(36px, 2.7777777778vw, 40px);
+}
+
+h3 .h3 {
+  font-size: clamp(26px, 2.0833333333vw, 30px);
+}
+
+h4 .h4 {
+  font-size: clamp(18px, 1.3888888889vw, 20px);
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  gap: 20px;
+  color: var(--blue-charcoal);
+  text-shadow: 1px 1px 1px var(--white), -1px -1px 1px var(--blue-violet-124);
+}
+
+.about-link,
+.store-link {
+  font-size: 25px;
+}
+.about-link:hover,
+.store-link:hover {
+  color: var(--blue-catalina);
+}
+.about-link:active,
+.store-link:active {
+  color: var(--blue-violet-124);
+}
+
+.header__inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header__title {
+  text-align: center;
+  padding-top: 20px;
+  margin-bottom: 50px;
+}
+.header__title span {
+  color: var(--gray-granite-99);
+  font-weight: 600;
+}
+
+.main__title {
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.main__info {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+.main__info-item span {
+  font-weight: 600;
+}
+
+.tohome-link {
+  color: var(--blue-charcoal);
+  text-shadow: 1px 1px 1px var(--white), -1px -1px 1px var(--blue-violet-124);
+}
+.tohome-link:hover {
+  color: var(--blue-catalina);
+}
+.tohome-link:active {
+  color: var(--blue-violet-124);
+}
+
+.store {
+  padding-top: 5px;
+  background: var(--green-sea);
+}
+
+.header__store-inner {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.header__image-link img {
+  border-radius: 10px;
+}
+.header__store-title {
+  font-size: 30px;
+  color: var(--white);
+}
+.header__store-title span {
+  font-weight: 600;
+}
+
+.main__text {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+.main__text span {
+  color: var(--black-olive);
+  font-weight: 600;
+}
+.main__phone {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.main__phone-title {
+  text-align: center;
+  font-size: 17px;
+}
+.main__phone-mtc, .main__phone-a1 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.main__phone-mtc img, .main__phone-a1 img {
+  margin-right: 10px;
+}
+.main__phone-text span, .main__address {
+  color: var(--black-olive);
+}
+.main__address {
+  margin-bottom: 20px;
+}/*# sourceMappingURL=styles.css.map */

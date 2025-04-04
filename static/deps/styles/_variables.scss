@@ -1,0 +1,35 @@
+:root {
+  --gray-granite-99: #636363;
+
+  --grey-crayola: #323142;
+
+  --blue-charcoal: #334155;
+
+  --white: #FFF;
+
+  --blue-violet-124: #7C6FCD;
+
+  --blue-catalina: #002073;
+
+  --green-sea: #309D5B;
+
+  --black-olive: #3E3E3E;
+
+  /* Font Family */
+  --font-family-base: "Inter", sans-serif;
+
+  --popins: "Poppins", sans-serif;
+  --plus-jakarta-sans: "Plus Jakarta Sans", sans-serif;
+  --manrope: "Manrope", sans-serif;
+
+
+  /* Shadows */
+  --box-shadow: 7px 82px 42px var(--grey-crayola);
+
+  /* Container */
+  --container-width: 1240px;
+  --container-padding-x: 15px;
+
+  /* Transition */
+  --transition-duration: 0.2s;
+}

@@ -1,0 +1,16 @@
+{% extends 'storeApp/layout.html' %}
+
+
+{% block content%}
+<main>
+  <div class="container">
+    <div class="links">
+      <a class="about-link" href="{% url 'storeApp:about' %}">Об авторе</a>
+      <a class="store-link" href="{% url 'storeApp:store' %}">О магазине</a>
+    </div>
+  </div>
+</main>
+{% endblock content %}
+
+
+

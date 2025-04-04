@@ -1,0 +1,43 @@
+{% extends 'storeApp/layout.html' %}
+{% load static %}
+
+
+
+{% block content%}
+<header>
+  <div class="container">
+    <div class="header__inner">
+      <h1 class="header__title">
+        Программист из 81 ТП? <span> МГКЦТешник</span>
+      </h1>
+    </div>
+  </div>
+</header>
+<main>
+  <div class="container">
+    <div class="main__inner">
+      <h2 class="main__title">
+        Кучерина Стефания Андреевна
+      </h2>
+      <ul class="main__info">
+        <li class="main__info-item">
+          <p class="main__info-text">
+            <span>Группа:</span> 81ТП
+          </p>
+        </li>
+        <li class="main__info-item">
+          <p class="main__info-text">
+            <span>Курс:</span> 2
+          </p>
+        </li>
+        <li class="main__info-item">
+          <p class="main__info-text">
+            <span>Куратор:</span> Кохно Тамара Аркадьевна
+          </p>
+        </li>
+      </ul>
+      <a class="tohome-link" href="{% url 'storeApp:index' %}"> ← Главная</a>
+    </div>
+  </div>
+</main>
+{% endblock %}

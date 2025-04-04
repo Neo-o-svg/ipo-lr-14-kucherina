@@ -1,0 +1,23 @@
+.links {
+  @include flex-center;
+  @include abs-center;
+  gap: 20px;
+  color: var(--blue-charcoal);
+  text-shadow:
+    1px 1px 1px var(--white),
+    -1px -1px 1px var(--blue-violet-124);
+}
+
+
+
+.about-link,
+.store-link {
+  font-size: 25px;
+  &:hover {
+    color: var(--blue-catalina);
+  }
+
+  &:active {
+    color: var(--blue-violet-124);
+  }
+}
