@@ -16,10 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('', include('storeApp.urls', namespace='storeApp')),
-    path('about/', include('storeApp.urls', namespace='about')),
-    path('store/', include('storeApp.urls', namespace='store')),
-]
+    path('', include(('storeApp.urls', 'storeApp'), namespace='storeApp')),
+    path('', include(('data.urls', 'data'), namespace='data')),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

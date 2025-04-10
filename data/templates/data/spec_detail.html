@@ -1,0 +1,30 @@
+{% extends 'storeApp/layout.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="specialty-data">
+    <h1 class="specialty-data__title">Информация о квалификации</h1>
+    <div class="specialty-data__info">
+      <p class="specialty-data__text">
+        <strong>Код:</strong> {{ specialty.fields.code|default:'Нет данных' }}
+      </p>
+      <p class="specialty-data__text">
+        <strong>Название:</strong> {{ specialty.fields.title|default:'Нет данных' }}
+      </p>
+      <p class="specialty-data__text">
+        <strong>Тип квалификации:</strong> {{ specialty.fields.c_type|default:'Нет данных' }}
+      </p>
+      <p class="specialty-data__text">
+        <strong>Группа:</strong> {{ specialty.fields.group|default:'Нет данных' }}
+      </p>
+      <p class="specialty-data__text">
+        <strong>Предшествующие квалификации:</strong> {{ specialty.fields.prev|default:'Нет данных' }}
+      </p>
+      <p class="specialty-data__text">
+        <strong>Описание:</strong> {{ specialty.fields.desc|default:'Нет данных' }}
+      </p>
+    </div>
+
+    <a class="specialty-data__link" href="{% url 'storeApp:index' %}">← Главная</a>
+  </div>
+{% endblock %}

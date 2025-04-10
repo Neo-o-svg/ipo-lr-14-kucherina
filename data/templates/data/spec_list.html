@@ -1,0 +1,19 @@
+{% extends 'storeApp/layout.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="specialties">
+  <h1 class="specialties__title">
+    Список квалификаций
+  </h1>
+  <ul class="specialties__list">
+    {% for spec in specialties %}
+    <li class="specialties__list-item">
+      <strong> {{ spec.fields.code}} </strong> - {{ spec.fields.title}} <em> {{spec.fields.c_type }} </em>
+    </li>
+    {% endfor %}
+  </ul>
+  <a class="specialties__link" href="{% url 'storeApp:index' %}"> ← Главная</a>
+</div>
+{% endblock content %}

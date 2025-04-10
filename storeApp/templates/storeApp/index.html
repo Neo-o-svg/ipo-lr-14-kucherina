@@ -1,16 +1,24 @@
 {% extends 'storeApp/layout.html' %}
 
+{% block content %}
+  <main>
+    <div class="container">
+      <div class="links">
+        <a class="about-link" href="{% url 'storeApp:about' %}">Об авторе</a>
+        <a class="store-link" href="{% url 'storeApp:store' %}">О магазине</a>
+      </div>
 
-{% block content%}
-<main>
-  <div class="container">
-    <div class="links">
-      <a class="about-link" href="{% url 'storeApp:about' %}">Об авторе</a>
-      <a class="store-link" href="{% url 'storeApp:store' %}">О магазине</a>
+      <aside class="sidebar">
+        <h2 class="sidebar__title">Лабораторная №15</h2>
+        <nav class="sidebar__spec">
+          <a class="sidebar__spec-link" href="{% url 'data:spec_list' %}">Список квалификаций</a>
+          <form method="get" action="{% url 'data:spec_detail' 0 %}" onsubmit="this.action = '/spec/' + this.id.value + '/'">
+            <label for="spec-id">Введите ID квалификации:</label>
+            <input type="number" id="spec-id" name="id" min="1" required />
+            <button type="submit">Найти</button>
+          </form>
+        </nav>
+      </aside>
     </div>
-  </div>
-</main>
-{% endblock content %}
-
-
-
+  </main>
+{% endblock %}

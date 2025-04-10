@@ -1,0 +1,14 @@
+{% extends 'storeApp/layout.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="error">
+    <h1 class="error__title">Упс! Страница не найдена.</h1>
+    <p class="error__text">К сожалению, квалификация с таким ID не найдена. Пожалуйста, проверьте ссылку или попробуйте другой ID.</p>
+    <div class="error__image">
+      <img src="{% static 'deps/images/404.jpg' %}" alt="404 error image" width="200px" loading="lazy" />
+    </div>
+
+    <a class="error__link" href="{% url 'storeApp:index' %}">← Главная</a>
+  </div>
+{% endblock %}
