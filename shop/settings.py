@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "Банан"
+SECRET_KEY = 'django-insecure-@c4gqax-toq%6t_jx(d9tua-@de$7^vbyww%ewnun2_p-u0f+6'    
 
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -120,6 +121,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 
+
+# Путь к директории для хранения загруженных файлов
+MEDIA_ROOT = BASE_DIR / 'media'
+
+
+# URL для доступа к файлам
+MEDIA_URL = '/media/'
+
+
+
 STATIC_URL = "static/"
 
 STATICFILES_DIRS = [
@@ -133,3 +144,4 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
